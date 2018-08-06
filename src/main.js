@@ -1,31 +1,27 @@
-P8.run({
-  images : [ 'monster1', 'monster2' ],
 
-  init : function() {
-    this.player1 = new Player(10, 10, 'monster1', P8.BROWN)
-    this.player2 = new Player(140, 10, 'monster2', P8.RED)
-  },
+function _init() {
+  this.player1 = new Player(10,  10, 0, BROWN)
+  this.player2 = new Player(140, 10, 1, RED)
+}
 
-  step : function(dt) {
-    this.player1.update(dt)
-    this.player2.update(dt)
-  },
+function _update() {
+  // player 1 controls
+  if (btnp(BTN_UP, 0)) this.player1.up()
+  if (btnp(BTN_DOWN, 0)) this.player1.down()
+  if (btnp(BTN_A, 0) || btnp(BTN_B, 0)) this.player1.endTurn(this.player2)
 
-  keydown : function(event) {
-    // player 1 controls
-    if (event.key === 'w') this.player1.up()
-    if (event.key === 's') this.player1.down()
-    if (event.key === 'space') this.player1.endTurn(this.player2)
+  // player 2 controls
+  if (btnp(BTN_UP, 1)) this.player2.up()
+  if (btnp(BTN_DOWN, 1)) this.player2.down()
+  if (btnp(BTN_A, 1) || btnp(BTN_B, 1)) this.player2.endTurn(this.player1)
 
-    // player 2 controls
-    if (event.key === 'up') this.player2.up()
-    if (event.key === 'down') this.player2.down()
-    if (event.key === 'enter') this.player2.endTurn(this.player1)
-  },
+  this.player1.update()
+  this.player2.update()
+}
 
-  render : function() {
-    P8.cls(P8.BLACK)
-    this.player1.draw(this.player2)
-    this.player2.draw(this.player1)
-  }
-});
+function _draw() {
+  cls(BLACK)
+
+  this.player1.draw(this.player2)
+  this.player2.draw(this.player1)
+}
