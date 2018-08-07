@@ -1,6 +1,6 @@
 let MENU_TEXT_COLOUR          = PEACH
 let DISABLED_MENU_TEXT_COLOUR = DARK_GRAY
-let STATUS_TEXT_COLOUR        = ORANGE
+let STATUS_TEXT_COLOUR        = BLUE
 let MAX_COOLDOWN              = 5 * 30 // 5 seconds
 
 class Player {

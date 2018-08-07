@@ -1,7 +1,7 @@
 
 function _init() {
-  this.player1 = new Player(10,  10, 0, BROWN)
-  this.player2 = new Player(140, 10, 1, RED)
+  this.player1 = new Player(10,  10, 0, RED)
+  this.player2 = new Player(140, 10, 1, ORANGE)
 }
 
 function _update() {
